@@ -1,0 +1,41 @@
+.calculate__content {
+    margin: 0 auto;
+    padding: 15px 10px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.form__contol-name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.calculate-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.calculate-result:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.result-data {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 23px;
+    color: #fa0a0af8;
+}
