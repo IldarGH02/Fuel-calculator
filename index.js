@@ -14,11 +14,19 @@ let fuelPrice;
 let depreciation;
 
 const checkInputs = (inputValue, inputData, position) => {
-    let regex =  /[\d.]/    
+    let regex =  /[\d.]/  
+    const length = inputData.value.length
     
-    if(inputData.value.length > 0) {
+    if(length > 0) {
         inputData.classList.remove('error_input')
     }
+    
+    if(length > 10) {
+        inputData.classList.add('error_input')
+        alert('Куда разогнался? Не больше 10 символов!!!')
+        inputData.value = ''
+        
+    } 
 
     if(!regex.test(inputValue)) {
         inputData.value = inputData.value.substring(0, position-1) + inputData.value.substring(position+1)
@@ -83,15 +91,12 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
 
 $send.addEventListener('click', (e) => {
     e.preventDefault()
-    if(getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs) && checkValueInput(inputs)) {
-        $distance.value = ''
-        $consumption.value = ''
-        $price.value = ''
-        $depreciationPrice.value = '' 
-    } else {
-        getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs)
-        checkValueInput(inputs)
-    }
+    getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs)
+    checkValueInput(inputs)   
+    $distance.value = ''
+    $consumption.value = ''
+    $price.value = ''
+    $depreciationPrice.value = ''
 })
 
 
