@@ -83,12 +83,15 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
 
 $send.addEventListener('click', (e) => {
     e.preventDefault()
-    getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs)
-    checkValueInput(inputs)
-    $distance.value = ''
-    $consumption.value = ''
-    $price.value = ''
-    $depreciationPrice.value = '' 
+    if(getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs) && checkValueInput(inputs)) {
+        $distance.value = ''
+        $consumption.value = ''
+        $price.value = ''
+        $depreciationPrice.value = '' 
+    } else {
+        getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs)
+        checkValueInput(inputs)
+    }
 })
 
 
