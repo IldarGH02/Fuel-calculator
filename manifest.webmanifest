@@ -1,6 +1,7 @@
 {
     "name": "IGCalculator",
-    "start_url": "index.html",
+    "start_url": "/calculate/",
+    "short_name": "Калькулятор топлива",
     "display": "fullscreen",
     "orientation": "portrait",
     "icons": [
