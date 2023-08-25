@@ -17,34 +17,17 @@ const checkInputs = (inputValue, inputData, position) => {
     let regex =  /[\d.]/  
     const length = inputData.value.length
     
-    if(length > 0) {
-        inputData.classList.remove('error_input')
-    }
-    
     if(length > 10) {
         inputData.classList.add('error_input')
         alert('Куда разогнался? Не больше 10 символов!!!')
-        inputData.value = ''
-        
-    } 
+        inputData.value = ''        
+    } else if(length > 0) {
+        inputData.classList.remove('error_input')
+    }
 
     if(!regex.test(inputValue)) {
         inputData.value = inputData.value.substring(0, position-1) + inputData.value.substring(position+1)
     }
-}
-
-const checkValueInput = (inputs) => {
-    inputs.forEach(input => {
-        const length = input.value.length
-        if(length <= 0) {
-            input.classList.add('error_input')
-        }
-        if(length > 10) {
-            input.value = ''
-            input.classList.add('error_input')
-            alert('Куда разогнался? 10 символов хватит тебе')
-        }
-    })
 }
 
 $distance.addEventListener('input', (e) => {
@@ -91,13 +74,9 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
 
 $send.addEventListener('click', (e) => {
     e.preventDefault()
-    getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs)
-    checkValueInput(inputs)   
+    getFuelPrice($distance, $consumption, $price, $depreciationPrice, inputs) 
     $distance.value = ''
     $consumption.value = ''
     $price.value = ''
     $depreciationPrice.value = ''
 })
-
-
-
