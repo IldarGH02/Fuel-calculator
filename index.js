@@ -60,7 +60,7 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
     let _price = Number(price.value)
     let _depreciationPrice = Number(depreciationPrice.value)
 
-    fuelPrice = Number(Math.floor((_distance / _consumption) * _price).toFixed(2))
+    fuelPrice = Number(Math.floor((_distance * (_consumption / 100)) * _price).toFixed(2))
     depreciation = Number(Math.floor(_distance * _depreciationPrice).toFixed(2))
     
     if(!isNaN(fuelPrice) && !isNaN(depreciation)) {
