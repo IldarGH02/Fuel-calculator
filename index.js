@@ -7,11 +7,13 @@ const $form = document.getElementById('form')
 const $send = document.querySelector('.form__send')
 const $resultFuel = document.getElementById('result__fuel')
 const $resultDepreciation = document.getElementById('result__depreciation')
+const $resultFuelVolume = document.getElementById('result__volume')
 
 const inputs = document.querySelectorAll('.form__input')
 
 let fuelPrice;
 let depreciation;
+let fuelVolume;
 
 const checkInputs = (inputValue, inputData, position) => {
     let regex =  /[\d.]/  
@@ -62,10 +64,12 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
 
     fuelPrice = Number(Math.floor((_distance * (_consumption / 100)) * _price).toFixed(2))
     depreciation = Number(Math.floor(_distance * _depreciationPrice).toFixed(2))
+    fuelVolume = Number(Math.floor(_consumption / 100).toFixed(2))
     
     if(!isNaN(fuelPrice) && !isNaN(depreciation)) {
         $resultFuel.innerText = fuelPrice + 'p.'
         $resultDepreciation.innerText = depreciation + 'p.'
+        $resultFuelVolume.innerText = fuelVolume + 'л.'
     } else {
         $resultFuel.innerHTML = 'Форма заполнена неверно'
         $resultDepreciation.innerHTML = 'Форма заполнена неверно'
