@@ -64,7 +64,7 @@ const getFuelPrice = (distance, consumption, price, depreciationPrice, inputs) =
 
     fuelPrice = Number(Math.floor((_distance * (_consumption / 100)) * _price).toFixed(2))
     depreciation = Number(Math.floor(_distance * _depreciationPrice).toFixed(2))
-    fuelVolume = Number(Math.floor(_consumption / 100).toFixed(2))
+    fuelVolume = Number(Math.floor(_distance * (_consumption / 100)).toFixed(2))
     
     if(!isNaN(fuelPrice) && !isNaN(depreciation)) {
         $resultFuel.innerText = fuelPrice + 'p.'
